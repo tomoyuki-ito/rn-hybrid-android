@@ -19,12 +19,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(
+        Button profileButton = findViewById(R.id.profile);
+        profileButton.setOnClickListener(
                 new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, MyReactActivity.class);
+                        intent.putExtra("moduleName", "Profile");
+                        intent.putExtra("message", "This is Profile Screen!");
+                        startActivityForResult(intent, 0);
+                    }
+                }
+        );
+        Button accountButton = findViewById(R.id.account);
+        accountButton.setOnClickListener(
+                new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, MyReactActivity.class);
+                        intent.putExtra("moduleName", "Account");
+                        intent.putExtra("message", "");
+                        startActivityForResult(intent, 0);
+                    }
+                }
+        );
+        Button otherButton = findViewById(R.id.other);
+        otherButton.setOnClickListener(
+                new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, MyReactActivity.class);
+                        intent.putExtra("moduleName", "Other");
+                        intent.putExtra("message", "");
                         startActivityForResult(intent, 0);
                     }
                 }

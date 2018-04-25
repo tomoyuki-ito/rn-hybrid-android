@@ -20,6 +20,9 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        bundle.putString("message", getIntent().getStringExtra("message"));
+
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
@@ -31,7 +34,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
                 .build();
         // The string here (e.g. "MyReactNativeApp") has to match
         // the string in AppRegistry.registerComponent() in index.js
-        mReactRootView.startReactApplication(mReactInstanceManager, "RNHighScores", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, getIntent().getStringExtra("moduleName"), bundle);
 
         setContentView(mReactRootView);
     }
